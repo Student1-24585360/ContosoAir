@@ -19,14 +19,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: DownloadBuildArtifacts@0
+- task: DownloadPipelineArtifact@2
   inputs:
     buildType: 'specific'
     project: 'd2b40923-1e79-45e3-b266-f382e67af80c'
-    pipeline: '3'
+    definition: '3'
     buildVersionToDownload: 'latest'
-    downloadType: 'single'
-    downloadPath: '$(Pipeline.Workspace)'
+    targetPath: '$(Pipeline.Workspace)'
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
